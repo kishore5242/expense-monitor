@@ -38,8 +38,8 @@ public class EmController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/sum")
-    public List<AmountGroup> getExpenses() throws IOException, ParseException {
+    @GetMapping("/savings")
+    public List<AmountGroup> getSavings() throws IOException, ParseException {
 
         List<AmountGroup> monthlySums = new ArrayList<>();
 
@@ -56,7 +56,7 @@ public class EmController {
 
         for (String group : monthlyRecords.keySet()) {
             List<Record> mrecs = monthlyRecords.get(group);
-            monthlySums.add(new AmountGroup(group, getSum(mrecs)));
+            monthlySums.add(new AmountGroup(group, getSavings(mrecs)));
         }
         return monthlySums;
     }
@@ -127,8 +127,8 @@ public class EmController {
         return balances;
     }
 
-    private Double getSum(List<Record> records) {
-        Double sum = 0.0;
+    private Double getSavings(List<Record> records) {
+        Double savings = 0.0;
         for (Record record : records) {
             Double debit = record.getDebit();
             Double credit = record.getCredit();
@@ -144,10 +144,10 @@ public class EmController {
             if (debit == 200000.0 || credit == 200000.0) {
                 continue;
             }
-            sum -= debit;
-            sum += credit;
+            savings -= debit;
+            savings += credit;
         }
-        return sum;
+        return savings;
     }
 
     private Double getExpense(List<Record> records) {

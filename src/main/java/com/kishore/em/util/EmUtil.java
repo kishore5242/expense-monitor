@@ -47,7 +47,7 @@ public final class EmUtil {
             Double.parseDouble(str);
             return true;
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return false;
     }
@@ -59,7 +59,7 @@ public final class EmUtil {
         try {
             return Double.parseDouble(str);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return 0.0;
     }

@@ -47,7 +47,7 @@ public class KotakService {
                 continue;
             }
             if (recording) {
-                System.out.println(firstCellValue);
+//                System.out.println(firstCellValue);
                 LocalDate valueDate = getValueDate(row, formulaEvaluator);
                 Double balance = getBalance(row, formulaEvaluator);
                 Double credit = getCredit(row, formulaEvaluator);

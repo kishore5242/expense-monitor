@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.text.ParseException;
 
 @SpringBootApplication
-public class ExpenseMonitorApplication {
+public class EmApplication {
 
     public static void main(String[] args) throws IOException, ParseException {
-        SpringApplication.run(ExpenseMonitorApplication.class, args);
+        SpringApplication.run(EmApplication.class, args);
     }
 
 
