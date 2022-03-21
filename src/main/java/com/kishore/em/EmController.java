@@ -47,17 +47,19 @@ public class EmController {
         records.addAll(iciciService.getRecords("D:\\finances\\temp\\icici.xls"));
         records.addAll(kotakService.getRecords("D:\\finances\\temp\\kotak.xls"));
 
-        Map<String, List<Record>> monthlyRecords = records.stream()
-                .sorted(Comparator.comparing(Record::getValueDate))
+        Map<LocalDate, List<Record>> monthlyRecords = records.stream()
                 .collect(Collectors.groupingBy(record -> {
                     LocalDate valueDate = record.getValueDate();
-                    return valueDate.getMonth() + " " + valueDate.getYear();
+                    return LocalDate.of(valueDate.getYear(), valueDate.getMonthValue(), 1);
                 }));
 
-        for (String group : monthlyRecords.keySet()) {
-            List<Record> mrecs = monthlyRecords.get(group);
-            monthlySums.add(new AmountGroup(group, getSavings(mrecs)));
-        }
+        monthlyRecords.keySet().stream()
+                .sorted()
+                .forEach(group -> {
+                    List<Record> mrecs = monthlyRecords.get(group);
+                    String label = group.getMonth() + " " + group.getYear();
+                    monthlySums.add(new AmountGroup(label, getSavings(mrecs)));
+                });
         return monthlySums;
     }
 

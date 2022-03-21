@@ -18,7 +18,11 @@ public class AmountGroup {
     }
 
     public Double getAmount() {
-        return amount;
+        if (amount != null) {
+            return Math.round(amount * 100.0) / 100.0;
+        } else {
+            return amount;
+        }
     }
 
     public void setAmount(Double amount) {

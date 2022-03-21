@@ -5,11 +5,15 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
 public final class EmUtil {
+
+    private static final DecimalFormat df = new DecimalFormat("0.00");
+
     private EmUtil() {
     }
 
