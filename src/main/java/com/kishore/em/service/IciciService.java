@@ -53,6 +53,7 @@ public class IciciService {
                 Double credit = getCredit(row, formulaEvaluator);
                 Double debit = getDebit(row, formulaEvaluator);
                 Record record = new Record("ICICI", valueDate, balance, credit, debit);
+                record.setRemark(getRemark(row, formulaEvaluator));
                 records.add(record);
             }
         }
@@ -83,6 +84,11 @@ public class IciciService {
     private Double getDebit(Row row, FormulaEvaluator formulaEvaluator) {
         Cell cell = row.getCell(6);
         return EmUtil.amountAsDouble(EmUtil.getCellValue(cell, formulaEvaluator));
+    }
+
+    private String getRemark(Row row, FormulaEvaluator formulaEvaluator) {
+        Cell cell = row.getCell(5);
+        return EmUtil.getCellValue(cell, formulaEvaluator);
     }
 
 }

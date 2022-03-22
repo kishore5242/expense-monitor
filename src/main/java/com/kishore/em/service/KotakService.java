@@ -53,6 +53,7 @@ public class KotakService {
                 Double credit = getCredit(row, formulaEvaluator);
                 Double debit = getDebit(row, formulaEvaluator);
                 Record record = new Record("Kotak", valueDate, balance, credit, debit);
+                record.setRemark(getRemark(row, formulaEvaluator));
                 records.add(record);
             }
         }
@@ -83,6 +84,11 @@ public class KotakService {
     private Double getDebit(Row row, FormulaEvaluator formulaEvaluator) {
         Cell cell = row.getCell(5);
         return EmUtil.amountAsDouble(EmUtil.getCellValue(cell, formulaEvaluator));
+    }
+
+    private String getRemark(Row row, FormulaEvaluator formulaEvaluator) {
+        Cell cell = row.getCell(3);
+        return EmUtil.getCellValue(cell, formulaEvaluator);
     }
 
 }

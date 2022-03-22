@@ -14,6 +14,8 @@ public class Record {
 
     private Double debit;
 
+    private String remark;
+
     public Record(String bank, LocalDate valueDate, Double balance) {
         this.bank = bank;
         this.valueDate = valueDate;
@@ -66,5 +68,13 @@ public class Record {
 
     public void setDebit(Double debit) {
         this.debit = debit;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }
